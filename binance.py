@@ -21,21 +21,24 @@ def extract(TP):
     response = requests.get(url)
     content = response.content.decode()
     # Load BIDS List
-    bids_list=json.loads(content)['bids']
-    bid_price_list=[]
-    for bid in bids_list:
-        price     =bid[0]
-        amount    =bid[1]
-        bid_price_list.append(price)
-    # Load ASKS List
-    asks_list=json.loads(content)['asks']
-    ask_price_list=[]
-    for ask in asks_list:
-        price     =ask[0]
-        amount    =ask[1]
-        ask_price_list.append(price)
+    bids=json.loads(content)['bids']
+    bids_list=[]
+#    print(type(bids_list))
+    for items in bids:
+        bids_pair={}
+        bids_pair['price']=items[0]
+        bids_pair['amount']=items[1]
+        bids_list.append(bids_pair)
+#    print(bids_list)
+#    print(bids)
 
-    #print ('Bids <=============> Asks')
-    #for n,g in zip(bid_price_list,ask_price_list):
-    #    print (n + '\t\t\t' + g)
+    asks=json.loads(content)['asks']
+    asks_list=[]
+    for items in asks:
+        asks_pair={}
+        asks_pair['price']=items[0]
+        asks_pair['amount']=items[1]
+        asks_list.append(asks_pair)
+#    print(asks_list)
+#    print(asks)
     return bids_list,asks_list
