@@ -5,19 +5,19 @@ import json
 def extract(TP):
     if TP =="eth_btc":
         url = "https://www.binance.com/api/v1/depth?symbol=ETHBTC"
-        print("Trading Pair is ETH<->BTC")
+#        print("Trading Pair is ETH<->BTC")
     elif TP == "xrp_btc":
         url = "https://www.binance.com/api/v1/depth?symbol=XRPBTC"
-        print("Trading Pair is XRP<->BTC")
+#        print("Trading Pair is XRP<->BTC")
     elif TP == "xml_btc":
         url = "https://www.binance.com/api/v1/depth?symbol=XLMBTC"
-        print("Trading Pair is XML<->BTC")
+#        print("Trading Pair is XML<->BTC")
     elif TP == "ltc_btc":
         url = "https://www.binance.com/api/v1/depth?symbol=LTCBTC"
-        print("Trading Pair is LTC<->BTC")
+#        print("Trading Pair is LTC<->BTC")
     else:
-        print("Currently not support this trading pairs %s",TP)
-        return [],[]
+#        print("Currently not support this trading pairs %s",TP)
+        return [],[],0
     response = requests.get(url)
     content = response.content.decode()
     # Load BIDS List
@@ -41,4 +41,4 @@ def extract(TP):
         asks_list.append(asks_pair)
 #    print(asks_list)
 #    print(asks)
-    return bids_list,asks_list
+    return bids_list,asks_list,1
