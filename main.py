@@ -3,12 +3,20 @@ import binance
 import okEX
 import misc
 import datetime
+import sys
+import progressbar
+
 
 trading_pairs=['xml_eurt','xml_cny','xml_xrp','xml_ltc','xml_eth','xml_btc','xrp_btc','eth_btc','ltc_btc']
 profile_TPs = ['xml_btc','xrp_btc','eth_btc','ltc_btc'] # trading pairs on multiple exchanges
-f = open('test_data.txt','w')
-for running_times in range(100000):
+
+totalTimes = 120001
+
+pbar = progressbar.ProgressBar()
+pbar.start(totalTimes)
+for running_times in range(totalTimes):
     for TP in profile_TPs:
+        f = open('test_data_'+TP+'_'+str(totalTimes)+'.txt','a')
     #    print("========== StellarTerm =========")
         bids_list_ST, asks_list_ST,valid_ST=stellarTerm.extract(TP)
     #    print(asks_list_ST)
@@ -54,9 +62,11 @@ for running_times in range(100000):
 
     #        print(datetime.datetime.now(),TP,lplatform_a,largest_a,"\t",lplatform_b,largest_b,"\t",
     #              splatform_a,smallest_a,"\t",splatform_b,smallest_b,"\t""Ask_Diff:",float(largest_a)-float(smallest_a),"\t""Bid_Diff:",float(largest_b)-float(smallest_b))
-            f.write("%s %s %s %s \t %s %s \t %s %s \t %s %s Ask_Diff: %s Bid_Diff: %s \n"%(datetime.datetime.now(),TP,lplatform_a,largest_a,lplatform_b,largest_b,
-                  splatform_a,smallest_a,splatform_b,smallest_b, (float(largest_a)-float(smallest_a)),(float(largest_b)-float(smallest_b))))
+            f.write("%s %s %s %.10f \t %s %.10f \t %s %.10f \t %s %.10f Ask_Diff: %.10f Bid_Diff: %.10f \n"%(datetime.datetime.now(),TP,lplatform_a,float(largest_a),lplatform_b,float(largest_b),
+                  splatform_a,float(smallest_a),splatform_b,float(smallest_b), (float(largest_a)-float(smallest_a)),(float(largest_b)-float(smallest_b))))
+            f.close()
         else:
             print("Only one or None platform supports current trading pair yet!")
+    pbar.update(running_times+1)
+pbar.finish()
 
-f.close()
