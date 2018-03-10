@@ -24,7 +24,7 @@ r_xlm_tempo  = 800
 profile_TPs = ['xml_btc','xml_eurt'] # trading pairs on multiple exchanges
 thres_bot_detect = 5 #to avoid offers' amount smaller than 50
 
-totalTimes = 10
+totalTimes = 1000000
 
 pbar = progressbar.ProgressBar()
 pbar.start(totalTimes)
