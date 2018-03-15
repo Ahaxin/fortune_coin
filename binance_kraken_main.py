@@ -1,0 +1,9 @@
+#binance.set('wjvLjxpyASuCJjWziuXk9DV3eYpfNzUan7YVj1XnoL0MNlSyhMCzG4bDVfN280la','eP9ksngYXzI1LuzFQQcKb7p1AEhEwFuAmSgFJx9Fg9GQ53k2yfntWz8wu0IkPYHd')
+
+from binance.client import BinanceRESTAPI, BinanceWebSocketAPI
+
+rest_client = BinanceRESTAPI('wjvLjxpyASuCJjWziuXk9DV3eYpfNzUan7YVj1XnoL0MNlSyhMCzG4bDVfN280la','eP9ksngYXzI1LuzFQQcKb7p1AEhEwFuAmSgFJx9Fg9GQ53k2yfntWz8wu0IkPYHd')
+ws_client = BinanceWebSocketAPI('wjvLjxpyASuCJjWziuXk9DV3eYpfNzUan7YVj1XnoL0MNlSyhMCzG4bDVfN280la')
+rest_client.ping()
+
+
