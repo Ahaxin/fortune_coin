@@ -1,4 +1,5 @@
 import stellarTerm
+import binance
 import misc
 import datetime
 import sys
@@ -8,7 +9,7 @@ from coinmarketcap import Market
 coinmarketcap = Market()
 
 
-def stellar_btc_eurt(jenkins=0):
+def binance_btc_eurt(jenkins=0):
     C_xlm_naobtc = 500
     C_xlm_tempo  = 500
     C_max_trade_xlm = 200
@@ -23,7 +24,7 @@ def stellar_btc_eurt(jenkins=0):
     r_xlm_naobtc = 800
     r_xlm_tempo  = 800
 
-    profile_TPs = ['xml_btc','xml_eurt'] # trading pairs on multiple exchanges
+    profile_TPs = ['xlm_btc','xlm_eurt'] # trading pairs on multiple exchanges
     thres_bot_detect = 5 #to avoid offers' amount smaller than 50
 
     totalTimes = 1000000
@@ -43,7 +44,7 @@ def stellar_btc_eurt(jenkins=0):
         realtime_btc_price_in_eur = realtime_btc_price[0]['price_eur']
         #print(realtime_btc_price[0]['price_eur'])
         try:
-            bids_list_BTC, asks_list_BTC,valid_BTC=stellarTerm.extract('xlm_btc')
+            bids_list_BTC, asks_list_BTC,valid_BTC=binance.extract('xlm_btc')
             bids_list_EUR, asks_list_EUR,valid_EUR=stellarTerm.extract('xlm_eurt')
         except KeyError:
             continue

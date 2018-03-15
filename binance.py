@@ -9,7 +9,7 @@ def extract(TP):
     elif TP == "xrp_btc":
         url = "https://www.binance.com/api/v1/depth?symbol=XRPBTC"
 #        print("Trading Pair is XRP<->BTC")
-    elif TP == "xml_btc":
+    elif TP == "xlm_btc":
         url = "https://www.binance.com/api/v1/depth?symbol=XLMBTC"
 #        print("Trading Pair is XML<->BTC")
     elif TP == "ltc_btc":
